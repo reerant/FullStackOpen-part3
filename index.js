@@ -4,6 +4,7 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static('dist'))
 
 morgan.token("body", (req, res) => JSON.stringify(req.body));
 app.use(
@@ -18,6 +19,7 @@ let persons = [
   { id: 5, name: "Maija Meikäläinen", number: "050-8383838" },
 ];
 
+// ROUTES
 //get all resources: persons and their phonenumbers
 app.get("/api/persons", (request, response) => {
   response.json(persons);
@@ -73,18 +75,17 @@ app.post("/api/persons", (request, response) => {
       error: "Name must be unique!",
     });
   }
-
   const person = {
     id: getRandomNumber(),
     name: body.name,
     number: body.number,
   };
-
   persons = persons.concat(person);
   console.log(person);
   response.json(person);
 });
 
+// PORT 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

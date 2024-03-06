@@ -1,7 +1,7 @@
-POST http://localhost:3001/api/persons
+POST https://fullstackopen-part3-lhpo.onrender.com/api/persons
 Content-Type: application/json
 
 {
-    "name": "Lauri Laurila",
-    "number": "041-394883834"
+    "name": "Tiina Testaaja",
+    "number": "041-93939393"
 }
